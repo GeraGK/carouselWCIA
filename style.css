@@ -1,4 +1,4 @@
-wcia-photo-carousel { 
+wcia-photo-carousel {
     position: relative;
     width: 500px;
     height: 300px;
@@ -9,12 +9,15 @@ wcia-photo-carousel {
     border-width: 1px;
     border-style: solid;
 }
-wcia-photo-carousel h2, h4 { 
+
+wcia-photo-carousel h2,
+h4 {
     margin-bottom: 0;
     margin-top: 0;
     margin-left: 10px;
 }
-wcia-photo-carousel .image-container { 
+
+wcia-photo-carousel .image-container {
     margin-top: 15px;
     flex: 1;
     background-color: black;
@@ -22,7 +25,8 @@ wcia-photo-carousel .image-container {
     background-repeat: no-repeat;
     background-position: 50%;
 }
-wcia-photo-carousel button{
+
+wcia-photo-carousel button {
     cursor: pointer;
     background: transparent;
     border: none;
@@ -31,9 +35,11 @@ wcia-photo-carousel button{
     position: absolute;
     top: 50%;
 }
+
 wcia-photo-carousel button.back {
     left: 10px;
 }
+
 wcia-photo-carousel button.forward {
     right: 10px;
 }

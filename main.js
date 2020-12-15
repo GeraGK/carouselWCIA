@@ -3,11 +3,11 @@ class PhotoCarousel extends HTMLElement { //описание веб компон
         this._photoIndex = 0;
         this._photos = this.getAttribute('photos').split(','); //создание 
 
-        this.innerHTML = '<h2>'+ this.getAttribute('title') + '</h2>' +
-        '<h4>by '+ this.getAttribute('author') + '</h4>' +
-        '<div class="image-container"></div>' +
-        '<button class="back">&lt</button>' +
-        '<button class="forward">&gt</button>';
+        this.innerHTML = '<h2>' + this.getAttribute('title') + '</h2>' +
+            '<h4>by ' + this.getAttribute('author') + '</h4>' +
+            '<div class="image-container"></div>' +
+            '<button class="back">&lt</button>' +
+            '<button class="forward">&gt</button>';
 
         this.showPhoto();
 
@@ -16,30 +16,30 @@ class PhotoCarousel extends HTMLElement { //описание веб компон
         this.querySelector("button.forward").addEventListener("click", event => this.onForwardButtonClick(event));
     }
 
-    showPhoto(){
+    showPhoto() {
         this.querySelector(".image-container").style.backgroundImage = `url(${this._photos[this._photoIndex]})`
     }
 
-    onBackButtonClick(event){
-        if(this._photoIndex == 0){
+    onBackButtonClick(event) {
+        if (this._photoIndex == 0) {
             this._photoIndex = this._photos.length - 1;
-        }else{
+        } else {
             this._photoIndex--;
         }
         this.showPhoto();
     }
 
 
-    onForwardButtonClick(event){
-        if(this._photoIndex == this._photos.length - 1){
+    onForwardButtonClick(event) {
+        if (this._photoIndex == this._photos.length - 1) {
             this._photoIndex = 0;
-        }else{
+        } else {
             this._photoIndex++;
         }
         this.showPhoto();
     }
 
-    }
-    if (!customElements.get('wcia-photo-carousel')) {
+}
+if (!customElements.get('wcia-photo-carousel')) {
     customElements.define('wcia-photo-carousel', PhotoCarousel);
-    }
+}
