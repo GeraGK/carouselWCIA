@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo Carousel Demo</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            class PhotoCarousel extends HTMLElement { 
+            connectedCallback() {
+                this._photoIndex = 0;
+                this._photos = this.getAttribute('photos').split(',');
+
+                this.innerHTML = '<h2>'+ this.getAttribute('title') + '</h2>' +
+                '<h4>by '+ this.getAttribute('author') + '</h4>' +
+                '<div class="image-container"></div>' +
+                '<button class="back">&lt</button>' +
+                '<button class="forward">&gt</button>';
+
+                this.showPhoto();
+
+                this.querySelector("button.back").addEventListener("click", event => this.onBackButtonClick(event));
+
+                this.querySelector("button.forward").addEventListener("click", event => this.onForwardButtonClick(event));
+            }
+
+            showPhoto(){
+                this.querySelector(".image-container").style.backgroundImage = `url(${this._photos[this._photoIndex]})`
+            }
+
+            onBackButtonClick(event){
+                if(this._photoIndex == 0){
+                    this._photoIndex = this._photos.length - 1;
+                }else{
+                    this._photoIndex--;
+                }
+                this.showPhoto();
+            }
+
+
+            onForwardButtonClick(event){
+                if(this._photoIndex == this._photos.length - 1){
+                    this._photoIndex = 0;
+                }else{
+                    this._photoIndex++;
+                }
+                this.showPhoto();
+            }
+
+            }
+            if (!customElements.get('wcia-photo-carousel')) {
+            customElements.define('wcia-photo-carousel', PhotoCarousel);
+            }
+            </script>
+    </head>
+    <body>
+        <wcia-photo-carousel
+        title="Nature photos"
+        author="vk.com"
+        photos=images/Career_1.jpg,images/Grass_Sea.jpg,images/High_Lake_1.jpg,images/High_Lake_2.jpg
+    ></wcia-photo-carousel>
+    </body>
+</html>
